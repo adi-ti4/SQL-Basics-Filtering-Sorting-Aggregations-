@@ -38,9 +38,16 @@ WHERE Channel = "Online"
 GROUP BY Location
 HAVING SUM(LoginAttempts) > 20;
 
+--  Summary Report of the total transactions
+SELECT TransactionID, CustomerOccupation, TransactionType,  
+AVG(CustomerAge) AS Average_CustomerAge, 
+SUM(TransactionAmount) AS sum_transaction
+FROM bank_transactions_dataset
+GROUP BY TransactionID, CustomerOccupation, TransactionType;
+
+
 -- Between 
 SELECT * FROM bank_transactions_dataset WHERE TransactionDate BETWEEN '10-05-2023' AND '10-07-2023';
-
 
 -- Like
 SELECT * FROM bank_transactions_dataset WHERE AccountID LIKE '%AC00302%';
